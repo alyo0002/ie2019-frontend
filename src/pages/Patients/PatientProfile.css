@@ -1,0 +1,39 @@
+p {
+    font-size: 18px;
+}
+.form-check-input{
+    margin-left: 0rem;
+    position: relative;
+}
+.form-check{
+    padding-top: 15px;
+}
+textarea {
+    height: 150px;
+}
+.profile-button{
+    width: 120px;
+}
+
+.classBox{
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin:-100px 0 0 -150px;
+}
+
+.button1 {
+    border-radius: 10px;
+    height: 39px;
+    width: 100px;
+}
+
+.button2 {
+    border-radius: 10px;
+    height: 40px;
+    width: 100px;
+}
+
+.cardProp {
+    height: 243px;
+}
