@@ -2,11 +2,20 @@ import { DetailsView, FileManagerComponent, NavigationPane, Toolbar, Inject } fr
 import * as React from 'react';
 import {Link} from "react-router-dom";
 import {Button} from "reactstrap";
+import {matchPath} from 'react-router'
+
 
 class PatientFile extends React.Component {
+    id;
     constructor() {
         super(...arguments);
-        this.hostUrl = "https://ej2services.syncfusion.com/production/web-services/";
+        const match = matchPath(this.props.history.location.pathname, {
+            path: '/PatientFile/:Id',
+            exact: true,
+            strict: false
+        });
+        this.id = match;
+        this.hostUrl = "http://localhost:8090/" + this.id.params.Id;
     }
     onSuccess(args) {
         console.log("Ajax request successful");
@@ -14,29 +23,35 @@ class PatientFile extends React.Component {
     onFailure(args) {
         console.log("Ajax request has failed");
     }
+    postSelectedHandler = ( Id ) => {
+        // this.props.history.push({pathname: '/posts/' + id});
+        this.props.history.push( '/PatientProfile/' + Id );
+
+    };
+
     render() {
         return (
 
-        <div className="control-section">
-            <FileManagerComponent id="file" view="Details"
-                enablePersistence={true}
-                allowDragAndDrop={true}
-                allowMultiSelection={true}
-                allowSearchOnTyping={true}
-                ajaxSettings={{
-                downloadUrl: this.hostUrl + 'api/FileManager/Download',
-                getImageUrl: this.hostUrl + "api/FileManager/GetImage",
-                uploadUrl: this.hostUrl + 'api/FileManager/Upload',
-                url: this.hostUrl + "api/FileManager/FileOperations"
-            }} success={this.onSuccess.bind(this)} failure={this.onFailure.bind(this)} >
-                <Inject services={[NavigationPane, DetailsView, Toolbar]}/>
+            <div className="control-section">
+                <FileManagerComponent id="file" view="Details"
+                                      enablePersistence={true}
+                                      allowDragAndDrop={true}
+                                      allowMultiSelection={true}
+                                      allowSearchOnTyping={true}
+                                      ajaxSettings={{
+                                          downloadUrl: this.hostUrl + '/Download',
+                                          getImageUrl: this.hostUrl + "/GetImage",
+                                          uploadUrl: this.hostUrl + '/Upload',
+                                          url: this.hostUrl + "/"
+                                      }} success={this.onSuccess.bind(this)} failure={this.onFailure.bind(this)} >
+                    <Inject services={[NavigationPane, DetailsView, Toolbar]}/>
 
-            </FileManagerComponent>
-            <div className="text-right">
-                <br/>
-                <Button color="primary" className="button2 " tag={Link} to="/PatientProfile">Back</Button>
+                </FileManagerComponent>
+                <div className="text-right">
+                    <br/>
+                    <Button color="primary" className="button2 " tag={Link} onClick={() => this.postSelectedHandler(this.id.params.Id)} >Back</Button>
+                </div>
             </div>
-        </div>
         );
     }
 }

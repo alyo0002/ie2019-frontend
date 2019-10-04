@@ -1,5 +1,5 @@
-import React, { Component, Suspense } from "react";
-import { connect } from 'react-redux';
+import React, {Component, Suspense} from "react";
+import {connect} from 'react-redux';
 
 
 // code splitting and lazy loading

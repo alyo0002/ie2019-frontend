@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Dropdown, DropdownMenu, DropdownToggle } from 'reactstrap';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import {Dropdown, DropdownMenu, DropdownToggle} from 'reactstrap';
 
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
@@ -43,7 +43,8 @@ class NotificationDropdown extends Component {
                 <DropdownToggle
                     data-toggle="dropdown"
                     tag="button"
-                    className="nav-link dropdown-toggle  waves-effect waves-light btn btn-link" onClick={this.toggleDropdown} aria-expanded={this.state.dropdownOpen}>
+                    className="nav-link dropdown-toggle  waves-effect waves-light btn btn-link"
+                    onClick={this.toggleDropdown} aria-expanded={this.state.dropdownOpen}>
                     <i className="fe-bell noti-icon"></i>
                     <span className="badge badge-danger rounded-circle noti-icon-badge">9</span>
                 </DropdownToggle>
@@ -56,11 +57,12 @@ class NotificationDropdown extends Component {
                                         <small>Clear All</small>
                                     </Link>
                                 </span>Notification
-                                </h5>
+                            </h5>
                         </div>
                         <PerfectScrollbar style={notificationContainerStyle}>
                             {this.props.notifications.map((item, i) => {
-                                return <Link to={this.getRedirectUrl(item)} className="dropdown-item notify-item" key={i + "-noti"}>
+                                return <Link to={this.getRedirectUrl(item)} className="dropdown-item notify-item"
+                                             key={i + "-noti"}>
                                     <div className={`notify-icon bg-${item.bgColor}`}>
                                         <i className={item.icon}></i>
                                     </div>
@@ -71,7 +73,8 @@ class NotificationDropdown extends Component {
                             })}
                         </PerfectScrollbar>
 
-                        <Link to="/" className="dropdown-item text-center text-primary notify-item notify-all">View All</Link>
+                        <Link to="/" className="dropdown-item text-center text-primary notify-item notify-all">View
+                            All</Link>
                     </div>
                 </DropdownMenu>
             </Dropdown>

@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { UncontrolledDropdown, Dropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {UncontrolledDropdown, Dropdown, DropdownMenu, DropdownItem, DropdownToggle} from 'reactstrap';
 
 
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import MetisMenu from 'metismenujs/dist/metismenujs';
 import profilePic from '../assets/images/users/Petra-1.jpg';
-
 
 
 const SideNavContent = () => {
@@ -44,18 +43,18 @@ const SideNavContent = () => {
 
 
                         <li>
-                                        <Link to="/" className="has-dropdown"  >Forms
-                                            <span className="menu-arrow"></span>
-                                        </Link>
+                            <Link to="/" className="has-dropdown">Forms
+                                <span className="menu-arrow"></span>
+                            </Link>
 
-                                        <ul className="nav-third-level nav">
-                                                <li>
-                                                   <Link to="/formComplete" className="side-nav-link-ref">Complete Form</Link>
-                                                </li>
-                                                <li>
-                                                   <Link to="/fromCreate" className="side-nav-link-ref">Create Form</Link>
-                                                </li>
-                                        </ul>
+                            <ul className="nav-third-level nav">
+                                <li>
+                                    <Link to="/formComplete" className="side-nav-link-ref">Complete Form</Link>
+                                </li>
+                                <li>
+                                    <Link to="/fromCreate" className="side-nav-link-ref">Create Form</Link>
+                                </li>
+                            </ul>
                         </li>
 
 
@@ -84,7 +83,8 @@ const SideNavContent = () => {
 const UserProfile = () => {
     return <React.Fragment>
         <div className="user-box text-center">
-            <img src={profilePic} alt="user-img" title="Petra Van Der Merwe" className="rounded-circle img-thumbnail avatar-lg" />
+            <img src={profilePic} alt="user-img" title="Petra Van Der Merwe"
+                 className="rounded-circle img-thumbnail avatar-lg"/>
             <UncontrolledDropdown>
                 <DropdownToggle caret tag="a" className="text-dark dropdown-toggle h5 mt-2 mb-1 d-block">
                     Petra Van Der Merwe
@@ -129,7 +129,7 @@ class Sidebar extends Component {
 
 
     /**
-     * 
+     *
      */
     componentDidMount = () => {
         this.initMenu();
@@ -192,7 +192,7 @@ class Sidebar extends Component {
             var parent = matchingMenuItem.parentElement;
 
             /**
-             * TODO: This is hard coded way of expading/activating parent menu dropdown and working till level 3. 
+             * TODO: This is hard coded way of expading/activating parent menu dropdown and working till level 3.
              * We should come up with non hard coded approach
              */
             if (parent) {
@@ -224,8 +224,8 @@ class Sidebar extends Component {
         return (
             <React.Fragment>
                 <div className='left-side-menu' ref={node => this.menuNodeRef = node}>
-                    {!isCondensed && <PerfectScrollbar><UserProfile /><SideNavContent /></PerfectScrollbar>}
-                    {isCondensed && <UserProfile /> && <SideNavContent />}
+                    {!isCondensed && <PerfectScrollbar><UserProfile/><SideNavContent/></PerfectScrollbar>}
+                    {isCondensed && <UserProfile/> && <SideNavContent/>}
                 </div>
             </React.Fragment>
         );

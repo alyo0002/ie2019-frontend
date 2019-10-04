@@ -5,6 +5,9 @@ import user1Image from "../../assets/images/users/user-10.jpg";
 import {Component} from "react";
 import axios from 'axios';
 import Post from '../../components/Post/Post'
+import {Link} from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import PatientProfile from "./PatientProfile";
 
 
 class Patients extends Component {
@@ -13,11 +16,17 @@ class Patients extends Component {
     };
 
     componentDidMount() {
-        axios.get('http://localhost:3050/patient/list')
+        axios.get('http://localhost:4000/patient/list')
             .then(response => {
                 this.setState({patients: response.data});
             });
     }
+    postSelectedHandler = ( Id ) => {
+        // this.props.history.push({pathname: '/posts/' + id});
+        this.props.history.push( '/PatientProfile/' + Id );
+
+    };
+//<Route path={this.props.match.url + '/:id'} exact component={PatientProfile}/>
 
     render() {
         const patientCards = this.state.patients.map(patients => {
@@ -25,15 +34,21 @@ class Patients extends Component {
                     Title={patients.Title}
                     NameFirst={patients.NameFirst}
                     NameLast={patients.NameLast}
-                    Id={patients.Id}
+                    key={patients.Id}
+                    clicked={() => this.postSelectedHandler(patients.Id)}
                 />
+
             }
         );
 
         return (
-            <Row>
-                {patientCards}
-            </Row>
+            <div>
+                <Row>
+                    {patientCards}
+                </Row>
+            </div>
+
+
         );
     }
 

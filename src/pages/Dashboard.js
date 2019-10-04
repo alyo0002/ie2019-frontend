@@ -5,9 +5,14 @@ import '../App.css';
 import { getLoggedInUser } from '../helpers/authUtils';
 import Loader from '../components/Loader';
 import { ListViewComponent } from '@syncfusion/ej2-react-lists';
+
+
 import Graph from "../components/Graph";
+import Chart from "../components/Chart";
+
 
 class DefaultDashboard extends Component {
+
 
     constructor(props) {
         super(props);
@@ -15,6 +20,7 @@ class DefaultDashboard extends Component {
             user: getLoggedInUser()
         };
         super(...arguments);
+
 
 
         this.arts = [
@@ -28,6 +34,16 @@ class DefaultDashboard extends Component {
     }
 
     render() {
+       /* let x :any[] = [ {x:1,y:1}];
+        let chart: Chart = new Chart({
+            series:[{
+                dataSource: x,
+                xName: 'x', yName: 'y',
+                // Series type as bar series
+                type: 'Bar'
+            }],
+
+        }, '#Graph');*/
 
         return (
             <React.Fragment>
@@ -40,7 +56,7 @@ class DefaultDashboard extends Component {
                             <Card style={{width:"100%", height:"500px"}}>
                                 <CardBody>
 
-                                        <Graph/>
+                                <Chart/>
 
                                 </CardBody>
                             </Card>
@@ -63,7 +79,7 @@ class DefaultDashboard extends Component {
                          <Col lg={6}>
                              <Card style={{width:"100%", height:"400px"}}>
                                  <CardBody>
-                                     This is Right Card
+
                                  </CardBody>
                              </Card>
                          </Col>

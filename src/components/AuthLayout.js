@@ -1,6 +1,6 @@
-import React, { Component, Suspense } from "react";
-import { Container } from 'reactstrap';
-import { connect } from 'react-redux';
+import React, {Component, Suspense} from "react";
+import {Container} from 'reactstrap';
+import {connect} from 'react-redux';
 
 import profilePic from '../assets/images/users/Petra-1.jpg';
 
@@ -16,7 +16,7 @@ const RightSidebarContent = (props) => {
     return <div className="user-box">
         <div className="user-img">
             <img src={profilePic} alt="user-img" title="Petra Van Der Merwe"
-                className="rounded-circle img-fluid" />
+                 className="rounded-circle img-fluid"/>
             <a href="/" className="user-edit"><i className="mdi mdi-pencil"></i></a>
         </div>
 
@@ -47,7 +47,7 @@ class AuthLayout extends Component {
      */
     toggleMenu = (e) => {
         e.preventDefault();
-        this.setState({ isCondensed: !this.state.isCondensed });
+        this.setState({isCondensed: !this.state.isCondensed});
     }
 
     /**
@@ -64,7 +64,8 @@ class AuthLayout extends Component {
             <div className="app">
                 <div id="wrapper">
                     <Suspense fallback={loading()}>
-                        <Topbar rightSidebarToggle={this.toggleRightSidebar} menuToggle={this.toggleMenu} {...this.props} />
+                        <Topbar rightSidebarToggle={this.toggleRightSidebar}
+                                menuToggle={this.toggleMenu} {...this.props} />
                         <Sidebar isCondensed={this.state.isCondensed} {...this.props} />
                     </Suspense>
                     <div className="content-page">
@@ -77,12 +78,12 @@ class AuthLayout extends Component {
                             </Container>
                         </div>
 
-                        <Footer />
+                        <Footer/>
                     </div>
                 </div>
 
                 <RightSidebar title={"Settings"}>
-                    <RightSidebarContent user={this.props.user} />
+                    <RightSidebarContent user={this.props.user}/>
                 </RightSidebar>
             </div>
         );

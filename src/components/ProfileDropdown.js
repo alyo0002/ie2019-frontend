@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Dropdown, DropdownMenu, DropdownToggle, DropdownItem } from 'reactstrap';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import {Dropdown, DropdownMenu, DropdownToggle, DropdownItem} from 'reactstrap';
 
 
 class ProfileDropdown extends Component {
@@ -30,8 +30,8 @@ class ProfileDropdown extends Component {
                     tag="button"
                     className="btn btn-link nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light"
                     onClick={this.toggleDropdown} aria-expanded={this.state.dropdownOpen}>
-                    <img src={profilePic} className="rounded-circle" alt="user" />
-                    <span className="pro-user-name ml-1">{this.props.username}  <i className="mdi mdi-chevron-down"></i> </span>
+                    <img src={profilePic} className="rounded-circle" alt="user"/>
+                    <span className="pro-user-name ml-1">{this.props.username} <i className="mdi mdi-chevron-down"></i> </span>
                 </DropdownToggle>
                 <DropdownMenu right className="profile-dropdown">
                     <div onClick={this.toggleDropdown}>
@@ -40,8 +40,8 @@ class ProfileDropdown extends Component {
                         </div>
                         {this.props.menuItems.map((item, i) => {
                             return <React.Fragment key={i + "-profile-menu"}>
-                                {item.hasDivider ? <DropdownItem divider /> : null}
-                            <Link to={item.redirectTo} className="dropdown-item notify-item">
+                                {item.hasDivider ? <DropdownItem divider/> : null}
+                                <Link to={item.redirectTo} className="dropdown-item notify-item">
                                     <i className={`${item.icon} mr-1`}></i>
                                     <span>{item.label}</span>
                                 </Link>

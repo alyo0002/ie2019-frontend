@@ -60,6 +60,7 @@ const routes = [
     { path: '/tasks', name: 'Tasks', component: Tasks, route: PrivateRoute, roles: ['Admin'], title: 'Tasks' },
     { path: '/reports', name: 'Reports', component: Reports, route: PrivateRoute, roles: ['Admin'], title: 'Reports' },
     { path: '/PatientProfile', name: 'PatientProfile', component: PatientProfile, route: PrivateRoute, roles: ['Admin'], title: 'Patient Profile' },
+     //{ path: '/:id', name: 'PatientProfile', component: PatientProfile, route: PrivateRoute, roles: ['Admin'], title: 'Patient Profile' },
     { path: '/fromCreate', name: 'FormCreate', component: FormCreate, route: PrivateRoute, roles: ['Admin'], title: 'Form Creation' },
     { path: '/PatientFile', name: 'PatientFile', component: PatientFile, route: PrivateRoute, roles: ['Admin'], title: 'Patients Files' },
 
