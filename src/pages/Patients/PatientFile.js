@@ -15,7 +15,9 @@ class PatientFile extends React.Component {
             strict: false
         });
         this.id = match;
-        this.hostUrl = "http://localhost:8090/" + this.id.params.Id;
+        // this.hostUrl = "http://localhost:8090/" + this.id.params.Id;
+        this.hostUrl = "http://localhost:8090/";
+
     }
     onSuccess(args) {
         console.log("Ajax request successful");
@@ -39,10 +41,10 @@ class PatientFile extends React.Component {
                                       allowMultiSelection={true}
                                       allowSearchOnTyping={true}
                                       ajaxSettings={{
-                                          downloadUrl: this.hostUrl + '/Download',
-                                          getImageUrl: this.hostUrl + "/GetImage",
-                                          uploadUrl: this.hostUrl + '/Upload',
-                                          url: this.hostUrl + "/"
+                                          downloadUrl: this.hostUrl + 'Download',
+                                          getImageUrl: this.hostUrl + "GetImage",
+                                          uploadUrl: this.hostUrl + 'Upload',
+                                          url: this.hostUrl + this.id.params.Id + "/"
                                       }} success={this.onSuccess.bind(this)} failure={this.onFailure.bind(this)} >
                     <Inject services={[NavigationPane, DetailsView, Toolbar]}/>
 
