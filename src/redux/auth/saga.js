@@ -63,7 +63,10 @@ function* login({ payload: { username, password } }) {
     };
 
     try {
+        console.log(options);
         const response = yield call(fetchJSON, '/users/authenticate', options);
+        // const response = yield call(fetchJSON, 'http://localhost:4000/authentication/signin', options);
+        console.log(response);
         setSession(response);
         yield put(loginUserSuccess(response));
     } catch (error) {
