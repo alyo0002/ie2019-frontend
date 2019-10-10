@@ -27,7 +27,7 @@ class PatientProfile extends React.Component {
         console.log('a: ' + a);
         let b = this.convertProgressToPhase(a);
         console.log(b);
-        let url = 'http://localhost:4000/treatment/' + this.state.SelectedPatient.Id + '/' + b;
+        let url = 'https://opms-backend.herokuapp.com/treatment/' + this.state.SelectedPatient.Id + '/' + b;
         axios.get(url)
             .then(response => {
                 console.log(response);

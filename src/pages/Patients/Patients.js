@@ -16,7 +16,7 @@ class Patients extends Component {
     };
 
     componentDidMount() {
-        axios.get('http://localhost:4000/patient/list')
+        axios.get('https://opms-backend.herokuapp.com/patient/list')
             .then(response => {
                 this.setState({patients: response.data});
             });

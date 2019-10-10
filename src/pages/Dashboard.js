@@ -35,7 +35,7 @@ class DefaultDashboard extends Component {
         ];
     }
 
-    refreshLogBoxPatients = () =>  {axios.get('http://localhost:4000/patient/listUpdate')
+    refreshLogBoxPatients = () =>  {axios.get('https://opms-backend.herokuapp.com/patient/listUpdate')
         .then(response => {
             console.log(response);
         });};
