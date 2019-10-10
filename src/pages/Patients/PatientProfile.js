@@ -3,19 +3,22 @@ import {Progress, Button, Card, CardBody, Col, FormGroup, Input, Label, Row,} fr
 import "./PatientProfile.css";
 import {Link} from "react-router-dom";
 import axios from 'axios';
-import {matchPath} from 'react-router'
+import {matchPath} from 'react-router';
+import { Formik } from 'formik';
 
 class PatientProfile extends React.Component {
     state = {
         data: 0,
         phase: 0,
-        SelectedPatient: []
+        SelectedPatient: [],
+        value: 0
     };
 
     updateState = (e) => {
         this.setState({
             data: e.target.value,
             phase: e.target.value,
+            value: e.target.value
         });
         this.x(e.target.value);
     };
@@ -37,13 +40,17 @@ class PatientProfile extends React.Component {
         this.setState({
             data: phase,
             phase: phase,
+
         });
         // this.forceUpdate();
     };
 
+
+
     convertProgressToPhase = (progress) => {
         progress = Number(progress);
         if (progress === 100)
+
             return 4;
         else if (progress === 75)
             return 3;
@@ -78,6 +85,7 @@ class PatientProfile extends React.Component {
         }
     };
 
+
     componentDidMount() {
         console.log(this.props);
         this.loadData();
@@ -86,6 +94,9 @@ class PatientProfile extends React.Component {
     componentDidUpdate() {
         this.loadData();
     }
+    handleChange = (e) => {
+        this.setState({value: e.target.value})
+    };
 
     loadData() {
         // console.log(this.props.match.param.Id);
@@ -112,8 +123,9 @@ class PatientProfile extends React.Component {
                     );
                 axios.get('http://localhost:4000/treatment/' + match.params.Id)
                     .then(response => {
-                        console.log(response)
-                        this.setState({data: this.convertPhaseToProgress(response.data.Phase)})
+                        console.log(response);
+                        this.setState({data: this.convertPhaseToProgress(response.data.Phase)});
+
                     })
             }
         }
@@ -144,30 +156,34 @@ class PatientProfile extends React.Component {
                                             <Row>
                                                 <Col lg="3">
                                                     <FormGroup check className="text-center">
-                                                        <Input type="radio" name="radio1" value="25"
-                                                               onChange={this.updateState}/><br/>
-                                                        <p>Phase 1</p>
+                                                        <Button id='1'  name="radio1" value="25"
+                                                                onClick={this.updateState}>
+                                                            Phase 1
+                                                        </Button>
                                                     </FormGroup>
                                                 </Col>
                                                 <Col lg="3">
                                                     <FormGroup check className="text-center">
-                                                        <Input type="radio" name="radio1" value="50"
-                                                               onChange={this.updateState}/><br/>
-                                                        <p>Phase 2</p>
+                                                        <Button id='2'  name="radio1" value="50"
+                                                                onClick={this.updateState}>
+                                                        Phase 2
+                                                        </Button>
                                                     </FormGroup>
                                                 </Col>
                                                 <Col lg="3">
                                                     <FormGroup check className="text-center">
-                                                        <Input type="radio" name="radio1" value="75"
-                                                               onChange={this.updateState}/><br/>
-                                                        <p>Phase 3</p>
+                                                        <Button id='3'  name="radio1" value="75"
+                                                                onClick={this.updateState}>
+                                                        Phase 3
+                                                        </Button>
                                                     </FormGroup>
                                                 </Col>
                                                 <Col lg="3">
                                                     <FormGroup check className="text-center">
-                                                        <Input type="radio" name="radio1" value="100"
-                                                               onChange={this.updateState}/><br/>
-                                                        <p>Phase 4</p>
+                                                        <Button id='4'  name="radio1" value="100"
+                                                                onClick={this.updateState}>
+                                                        Phase 4
+                                                        </Button>
                                                     </FormGroup>
                                                 </Col>
                                             </Row>
