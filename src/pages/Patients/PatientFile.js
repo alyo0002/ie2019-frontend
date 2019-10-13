@@ -16,7 +16,7 @@ class PatientFile extends React.Component {
         });
         this.id = match;
         // this.hostUrl = "http://localhost:8090/" + this.id.params.Id;
-        this.hostUrl = "https://opms-fs.herokuapp.com/";
+        this.hostUrl = "http://localhost:8090/";
 
     }
     onSuccess(args) {

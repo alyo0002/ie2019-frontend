@@ -3,22 +3,19 @@ import {Progress, Button, Card, CardBody, Col, FormGroup, Input, Label, Row,} fr
 import "./PatientProfile.css";
 import {Link} from "react-router-dom";
 import axios from 'axios';
-import {matchPath} from 'react-router';
-import { Formik } from 'formik';
+import {matchPath} from 'react-router'
 
 class PatientProfile extends React.Component {
     state = {
         data: 0,
         phase: 0,
-        SelectedPatient: [],
-        value: 0
+        SelectedPatient: []
     };
 
     updateState = (e) => {
         this.setState({
             data: e.target.value,
             phase: e.target.value,
-            value: e.target.value
         });
         this.x(e.target.value);
     };
@@ -27,7 +24,7 @@ class PatientProfile extends React.Component {
         console.log('a: ' + a);
         let b = this.convertProgressToPhase(a);
         console.log(b);
-        let url = 'https://opms-backend.herokuapp.com/treatment/' + this.state.SelectedPatient.Id + '/' + b;
+        let url = 'http://localhost:4000/treatment/' + this.state.SelectedPatient.Id + '/' + b;
         axios.get(url)
             .then(response => {
                 console.log(response);
@@ -40,17 +37,13 @@ class PatientProfile extends React.Component {
         this.setState({
             data: phase,
             phase: phase,
-
         });
         // this.forceUpdate();
     };
 
-
-
     convertProgressToPhase = (progress) => {
         progress = Number(progress);
         if (progress === 100)
-
             return 4;
         else if (progress === 75)
             return 3;
@@ -85,7 +78,6 @@ class PatientProfile extends React.Component {
         }
     };
 
-
     componentDidMount() {
         console.log(this.props);
         this.loadData();
@@ -94,9 +86,6 @@ class PatientProfile extends React.Component {
     componentDidUpdate() {
         this.loadData();
     }
-    handleChange = (e) => {
-        this.setState({value: e.target.value})
-    };
 
     loadData() {
         // console.log(this.props.match.param.Id);
@@ -123,9 +112,8 @@ class PatientProfile extends React.Component {
                     );
                 axios.get('http://localhost:4000/treatment/' + match.params.Id)
                     .then(response => {
-                        console.log(response);
-                        this.setState({data: this.convertPhaseToProgress(response.data.Phase)});
-
+                        console.log(response)
+                        this.setState({data: this.convertPhaseToProgress(response.data.Phase)})
                     })
             }
         }
@@ -154,36 +142,39 @@ class PatientProfile extends React.Component {
                                         <h3 className="text-center">Treatment Phase</h3>
                                         <FormGroup tag="fieldset">
                                             <Row>
-                                                <Col lg="3">
+                                                <Col lg="2">
                                                     <FormGroup check className="text-center">
-                                                        <Button id='1'  name="radio1" value="25"
-                                                                onClick={this.updateState}>
-                                                            Phase 1
-                                                        </Button>
+                                                        <Input type="radio" name="radio1" value="25"
+                                                               onChange={this.updateState}/><br/>
+                                                        <p>Phase 1</p>
+                                                    </FormGroup>
+                                                </Col>
+                                                <Col lg="2">
+                                                    <FormGroup check className="text-center">
+                                                        <Input type="radio" name="radio1" value="50"
+                                                               onChange={this.updateState}/><br/>
+                                                        <p>Phase 2</p>
+                                                    </FormGroup>
+                                                </Col>
+                                                <Col lg="2">
+                                                    <FormGroup check className="text-center">
+                                                        <Input type="radio" name="radio1" value="75"
+                                                               onChange={this.updateState}/><br/>
+                                                        <p>Phase 3</p>
                                                     </FormGroup>
                                                 </Col>
                                                 <Col lg="3">
                                                     <FormGroup check className="text-center">
-                                                        <Button id='2'  name="radio1" value="50"
-                                                                onClick={this.updateState}>
-                                                        Phase 2
-                                                        </Button>
+                                                        <Input type="radio" name="radio1" value="100"
+                                                               onChange={this.updateState}/><br/>
+                                                        <p>Phase 4</p>
                                                     </FormGroup>
                                                 </Col>
-                                                <Col lg="3">
+                                                <Col lg="2">
                                                     <FormGroup check className="text-center">
-                                                        <Button id='3'  name="radio1" value="75"
-                                                                onClick={this.updateState}>
-                                                        Phase 3
-                                                        </Button>
-                                                    </FormGroup>
-                                                </Col>
-                                                <Col lg="3">
-                                                    <FormGroup check className="text-center">
-                                                        <Button id='4'  name="radio1" value="100"
-                                                                onClick={this.updateState}>
-                                                        Phase 4
-                                                        </Button>
+                                                        <Input type="radio" name="radio1" value="0"
+                                                               onChange={this.updateState}/><br/>
+                                                        <p>End of Treatment</p>
                                                     </FormGroup>
                                                 </Col>
                                             </Row>

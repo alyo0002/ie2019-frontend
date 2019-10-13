@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Row, Col, Card, CardBody, Button} from 'reactstrap';
+import { Row, Col, Card, CardBody } from 'reactstrap';
 import '../App.css';
 import { getLoggedInUser } from '../helpers/authUtils';
 import Loader from '../components/Loader';
@@ -9,8 +9,6 @@ import { ListViewComponent } from '@syncfusion/ej2-react-lists';
 
 import Graph from "../components/Graph";
 import Chart from "../components/Chart";
-import {Link} from "react-router-dom";
-import axios from "axios";
 
 
 class DefaultDashboard extends Component {
@@ -34,11 +32,6 @@ class DefaultDashboard extends Component {
             { text: 'Oil Painting', id: '06' }
         ];
     }
-
-    refreshLogBoxPatients = () =>  {axios.get('https://opms-backend.herokuapp.com/patient/listUpdate')
-        .then(response => {
-            console.log(response);
-        });};
 
     render() {
        /* let x :any[] = [ {x:1,y:1}];
@@ -76,8 +69,7 @@ class DefaultDashboard extends Component {
                             <Card style={{width:"100%", height:"400px"}}>
                                 <CardBody>
                                     <div>
-                                        <Button color="primary" className="button1" tag={Link}
-                                                onClick={() => this.refreshLogBoxPatients()}>Sync With LogBox</Button>
+                                        <ListViewComponent id="list" dataSource={this.arts}/>
                                     </div>
                                 </CardBody>
                             </Card>

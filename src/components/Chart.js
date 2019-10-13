@@ -37,14 +37,20 @@ class Chart extends React.Component {
 
     loadData = async () => {
         await axios.get('http://localhost:4000/treatment/totals')
-            .then(response => {
-                console.log(response);
-                // this.setState({data: response.data});
+            .then(async response => {
+                console.log(response.data);
+                // delete response.data['0'];
+                response.data.shift();
+
 
                 let labels = response.data.map(e => {
-                    return "Phase " + e.phase;
+
+                        return "Phase " + e.phase;
+
+
                 });
                 let values = response.data.map(e => {
+
                     return Number(e.count);
                 });
 
